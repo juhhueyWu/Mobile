@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>myJournal</title>
+		<meta http-equiv=Content-Type content=text/html;charset="utf-8" />
+		<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, initial-scale=1, user-scalable=no">
+		<link rel="stylesheet" href="css/jquery.mobile-1.2.0.css" />
+		<link rel="stylesheet" href="css/myJournal.css" />
+		<script type="text/javascript" src="lib/cordova-2.2.0.js"></script>
+		<script type="text/javascript" src="lib/jquery-1.8.2.js"></script>
+		<script type="text/javascript" src="lib/jquery.mobile-1.2.0.js"></script>
+		<script type="text/javascript" src="lib/string.toformat.js"></script>
+		<script type="text/javascript" src="lib/date.js"></script>
+		<script type="text/javascript" src="lib/migrator.js"></script>
+	</head>
+
+	<body>
+		<!-- 主畫面	-->
+		<div data-role="page" id="home">
+			<div data-role="header">
+				<h1>神腦行動網</h1>
+			</div>
+			<div data-role="navbar">
+				<ul>
+					<li>
+						<a href = "#" id="CheckInBtn">打卡</a>
+					<li>
+						<a href = "#" id="HistoryBtn">記錄</a>
+				</ul>
+			</div>
+
+			<div data-role="controlgroup" id="CheckIn_store_list"></div>
+			<div data-role="collapsible-set" data-theme = "e" id="history_list"></div>
+			<a data-role="button" id="checkInSelectedStoreBtn">打卡</a>
+			<div data-role="footer"></div>
+		</div>
+
+		<!-- 第一次執行 註冊畫面 -->
+		<div data-role="page" id="createAccountPage">
+			<div data-role="header">
+				<h1>註冊</h1>
+			</div>
+
+			<div data-role="content">
+				<form method="post" id="createAccountPage">
+					<p>
+						歡迎首次使用神腦行動打卡，請進行手機註冊!!
+					</p>
+					<input type="text" name="accountNameEdit" placeholder="帳號" id="accountNameEdit" />
+					<input type="password" name="passwordEdit" placeholder="密碼" id="passwordEdit" />
+					<br>
+					<a data-role="button" data-theme="b" id="createAccountButton">註冊</a>
+				</form>
+				<br>
+			</div>
+		</div>
+
+		<!-- 登入失敗畫面 -->
+		<div data-role="page" data-add-back-btn="true" id="loginFailedPage" >
+			<div data-role="header">
+				<a href="#createAccountPage" data-role="button" data-icon="back">返回</a>
+				<h1>神腦行動網</h1>
+			</div>
+			<div data-role="content">
+				<h2>認證失敗</h2>
+				<br />
+				<p>
+					您輸入的帳號或是密碼錯誤!
+				</p>
+				<br />
+			</div>
+		</div>
+
+		<!-- 登入成功畫面 -->
+		<div data-role="page" data-add-back-btn="true"  id="loginSuccessPage" >
+			<div data-role="header">
+			<a href="#home" data-role="button" data-icon="back">返回</a>
+			<h1>神腦行動網</h1>
+			</div>
+			<div data-role="content">
+				<h2>註冊成功</h2>
+				<br />
+				<p>
+					手機已註冊成功，歡迎使用神腦行動網!
+				</p>
+				<br />
+			</div>
+		</div>
+
+		<!-- 無法定位 -->
+		<div data-role="dialog" data-theme="e" id="geolocationErrorDialog">
+			<div data-role="header">
+				<h1>錯誤</h1>
+			</div>
+			<br/>
+			<p>
+				無法定位
+			</p>
+			<br/>
+		</div>
+	</body>
+
+	<script>
+		$.extend($.mobile,
+		{
+			ajaxEnabled : false,
+			hashListeningEnabled : false
+		});
+	</script>
+
+	<script type="text/javascript" src="scripts/mc-main.js"></script>
+</html>
